@@ -13,6 +13,8 @@
 #  permissions and limitations under the License.
 """Utilities for creating step runs."""
 
+from __future__ import annotations
+
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
 from zenml import Tag, add_tags
@@ -194,7 +196,7 @@ class StepRunRequestFactory:
         """
         from zenml.steps.base_step import BaseStep
 
-        step_instance = BaseStep[..., Any].load_from_source(step.spec.source)
+        step_instance = BaseStep[Any, Any].load_from_source(step.spec.source)
 
         docstring = step_instance.docstring
         if docstring and len(docstring) > TEXT_FIELD_MAX_LENGTH:
